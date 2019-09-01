@@ -126,8 +126,8 @@ def decoder_mnist_norm(z, n_hidden, n_output, keep_prob):
         hid = tf.nn.dropout(hid, keep_prob, name='drop1')
         hid = tf.layers.dense(hid, n_hidden, activation=tf.nn.relu, name='fc2')
         hid = tf.nn.dropout(hid, keep_prob, name='drop2')
-        gaussian_params = tf.layers.dense(hid, 2 * n_output, activation=tf.sigmoid, name='fc3')
-        mean = gaussian_params[:, :n_output]
+        gaussian_params = tf.layers.dense(hid, 2 * n_output, activation=None, name='fc3')
+        mean = tf.sigmoid(gaussian_params[:, :n_output])
         stddev = 1e-6 + tf.nn.softplus(gaussian_params[:, n_output:])
     return mean, stddev
 
@@ -138,7 +138,7 @@ def decoder_mnist_beta(z, n_hidden, n_output, keep_prob):
         hid = tf.nn.dropout(hid, keep_prob, name='drop1')
         hid = tf.layers.dense(hid, n_hidden, activation=tf.nn.relu, name='fc2')
         hid = tf.nn.dropout(hid, keep_prob, name='drop2')
-        beta_params = tf.layers.dense(hid, 2 * n_output, activation=tf.sigmoid, name='fc3')
+        beta_params = tf.layers.dense(hid, 2 * n_output, activation=None, name='fc3')
         alpha = 1e-6 + tf.nn.softplus(beta_params[:, :n_output])
         beta = 1e-6 + tf.nn.softplus(beta_params[:, n_output:])
     return alpha, beta
