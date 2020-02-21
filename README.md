@@ -19,3 +19,11 @@ def cont_bern_log_norm(lam, l_lim=0.49, u_lim=0.51):
 ```
 
 ## The continuous categorical: a novel simplex-valued exponential family
+
+We provide python scripts to train the models used in the paper, as well as to produce the relevant figures and summary statistics.
+- ```cc/cc_funcs.py``` contains functions specific to the CC distribution (log-normalizer, log-likelihood etc.).
+- ```cc/cc_samplers.py``` contains sampling algorithms for the CC distribution.
+- ```cc/mle_empirical_average.py``` runs simulations that can be used to evaluate the bias of the Dirichlet and CC.
+- The scripts ```cc/election*``` prepare the data and fit our models of the UK general election. They include example code for Keras model objects that use the CC (both linear models and neural networks).
+- The scripts ```cc/mnist*``` train teacher and student models for our model compression experiments.
+- The scripts ```cc/plot*``` produce the plots used for the manuscript.
