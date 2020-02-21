@@ -1,6 +1,10 @@
-# The continuous Bernoulli: fixing a pervasive error in variational autoencoders
+# The continuous Bernoulli: fixing a pervasive error in variational autoencoders & The continuous categorical: a novel simplex-valued exponential family
 
-This repo contains example code (Tensorflow 1) from [The continuous Bernoulli: fixing a pervasive error in variational autoencoders](https://arxiv.org/abs/1907.06845). Different likelihoods are in separate notebooks for didactic purposes, cb_vae_mnist.ipynb implements the continuous Bernoulli VAE on MNIST. If you are only interested in the log normalizing constant of the continuous Bernoulli, see the code snippet below:
+This repo contains example code from [The continuous Bernoulli: fixing a pervasive error in variational autoencoders](https://arxiv.org/abs/1907.06845) (Tensorflow 1) and [The continuous categorical: a novel simplex-valued exponential family](https://arxiv.org/abs/2002.08563) (Tensorflow 2).
+
+## The continuous Bernoulli: fixing a pervasive error in variational autoencoders
+
+Different likelihoods are in separate notebooks for didactic purposes, cb_vae_mnist.ipynb implements the continuous Bernoulli VAE on MNIST. If you are only interested in the log normalizing constant of the continuous Bernoulli, see the code snippet below:
 ```
 def cont_bern_log_norm(lam, l_lim=0.49, u_lim=0.51):
     # computes the log normalizing constant of a continuous Bernoulli distribution in a numerically stable way.
@@ -13,3 +17,5 @@ def cont_bern_log_norm(lam, l_lim=0.49, u_lim=0.51):
     taylor = tf.log(2.0) + 4.0 / 3.0 * tf.pow(lam - 0.5, 2) + 104.0 / 45.0 * tf.pow(lam - 0.5, 4)
     return tf.where(tf.logical_or(tf.less(lam, l_lim), tf.greater(lam, u_lim)), log_norm, taylor)
 ```
+
+## The continuous categorical: a novel simplex-valued exponential family
