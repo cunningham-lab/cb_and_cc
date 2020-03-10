@@ -4,7 +4,7 @@ This repo contains example code from [The continuous Bernoulli: fixing a pervasi
 
 ## The continuous Bernoulli: fixing a pervasive error in variational autoencoders
 
-Different likelihoods are in separate notebooks for didactic purposes, cb/cb_vae_mnist.ipynb implements the continuous Bernoulli VAE on MNIST. If you are only interested in the log normalizing constant of the continuous Bernoulli, see the code snippet below:
+The continuous Bernoulli is now part of [Tensorflow probability](https://github.com/tensorflow/probability) (as of writting this, only in the bleeding edge version). Different likelihoods are in separate notebooks for didactic purposes, cb/cb_vae_mnist.ipynb implements the continuous Bernoulli VAE on MNIST. If you are only interested in the log normalizing constant of the continuous Bernoulli, see the code snippet below:
 ```
 def cont_bern_log_norm(lam, l_lim=0.49, u_lim=0.51):
     # computes the log normalizing constant of a continuous Bernoulli distribution in a numerically stable way.
