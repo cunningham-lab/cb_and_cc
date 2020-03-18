@@ -1,4 +1,5 @@
 import numpy as np
+from cc_funcs import lambda_to_eta, cc_log_prob, cc_log_norm_const
 
 # Define functions for naive rejection sampling of the MCB:
 
@@ -215,3 +216,46 @@ def sample_cc_ordered(lam, return_acceptance_rates=False, return_unif=False):
         return samples, acc_rates
     else:
         return samples
+
+def sample_cc_dir(lam, return_acceptance_rates=False, return_unif=False):
+    # returns n samples from a K-1 dimensional CC using the (uniform) Dirichlet-proposal rejection sampler.
+    # lambda should have shape [n, K]
+    n, K = np.shape(lam)
+    samples = np.zeros([n, K])
+    acc_rates = np.zeros(n)
+    for i in range(n):
+        if return_acceptance_rates:
+            samples[i], acc_rates[i] = sample_cc_dir_simple(lam[i], True)
+        else:
+            samples[i] = sample_cc_dir_simple(lam[i])
+    if return_acceptance_rates:
+        return samples, acc_rates
+    else:
+        return samples
+
+def sample_cc_dir_simple(lam, return_acceptance_rates=False):
+    K = lam.size
+    lam = lam.reshape([1,K])
+    eta = lambda_to_eta(lam).numpy()
+    alpha = np.ones(K)
+    not_accepted = True
+    attempts = 0.0
+    # rejection sampling ratio:
+    rsr = np.log(lam.max()) + cc_log_norm_const(eta) - np.log(np.math.factorial(K-1))
+    while not_accepted:
+        sample = np.random.dirichlet(alpha)
+        u = np.random.uniform()
+        if  np.log(u) < cc_log_prob(sample, eta) - np.log(np.math.factorial(K-1)) - rsr:
+            not_accepted = False
+        attempts += 1
+
+        if attempts > 1e5:
+            not_accepted = False
+            sample = sample * np.nan
+
+    if return_acceptance_rates:
+        return sample, 1.0 / attempts
+    else:
+        return sample
+
+
