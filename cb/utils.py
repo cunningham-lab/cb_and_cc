@@ -127,7 +127,7 @@ def decoder_mnist_norm(z, n_hidden, n_output, keep_prob):
         hid = tf.layers.dense(hid, n_hidden, activation=tf.nn.relu, name='fc2')
         hid = tf.nn.dropout(hid, keep_prob, name='drop2')
         gaussian_params = tf.layers.dense(hid, 2 * n_output, activation=None, name='fc3')
-        mean = tf.sigmoid(gaussian_params[:, :n_output])
+        mean = gaussian_params[:, :n_output] # we found better performance without a sigmoid
         stddev = 1e-6 + tf.nn.softplus(gaussian_params[:, n_output:])
     return mean, stddev
 
