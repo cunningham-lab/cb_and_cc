@@ -1,6 +1,6 @@
-# The continuous Bernoulli: fixing a pervasive error in variational autoencoders & The continuous categorical: a novel simplex-valued exponential family
+# The continuous Bernoulli & The continuous categorical
 
-This repo contains example code from [The continuous Bernoulli: fixing a pervasive error in variational autoencoders](https://arxiv.org/abs/1907.06845) (Tensorflow 1) and [The continuous categorical: a novel simplex-valued exponential family](https://arxiv.org/abs/2002.08563) (Tensorflow 2).
+This repo contains example code from [The continuous Bernoulli: fixing a pervasive error in variational autoencoders](https://arxiv.org/abs/1907.06845) (Tensorflow 1), [The continuous categorical: a novel simplex-valued exponential family](https://arxiv.org/abs/2002.08563) (Tensorflow 2), and [Uses and Abuses of the Cross-Entropy Loss: Case Studies in Modern Deep Learning](https://arxiv.org/abs/2002.08563) (Tensorflow 2).
 
 ## The continuous Bernoulli: fixing a pervasive error in variational autoencoders
 
@@ -29,3 +29,17 @@ To fully reproduce the results in the paper, we provide the following python scr
 - The scripts ```cc/election*``` prepare the data and fit our models of the UK general election. They include example code for Keras model objects that use the CC (both linear models and neural networks).
 - The scripts ```cc/mnist*``` train teacher and student models for our model compression experiments.
 - The scripts ```cc/plot*``` produce the plots used for the manuscript.
+
+## Uses and Abuses of the Cross-Entropy Loss: Case Studies in Modern Deep Learning
+
+To reproduce the results on CC-LS:
+- ```cc/icbinb/ls/cifar10_model.py``` trains CNNs on CIFAR-10 under different regularization/label smoothing settings.
+- ```cc/icbinb/ls/run_ablation.sh``` runs our CNNs across seeds/regularizations/LS settings and saves results.
+- ```cc/icbinb/ls/cifar10_ablation.py``` summarizes ablation study results into a table.
+- ```cc/icbinb/ls/cifar10_visualize_logits.py``` plots logits under different label smoothing settings.
+
+To reproduce the results on CC-AMN:
+- ```cc/icbinb/rl/train_dqn.py``` trains DQNs on Atari games.
+- ```cc/icbinb/rl/train_amn.py``` trains AMNs on Atari games.
+- ```cc/icbinb/rl/run_all*``` runs and saves our DQNs and AMNs.
+- ```cc/icbinb/rl/plot_amn.py``` plots the results.

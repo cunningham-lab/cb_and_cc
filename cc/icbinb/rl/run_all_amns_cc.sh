@@ -1,0 +1,10 @@
+sbatch gpu_run.sh 'train_amn.py --ENVS=BreakoutDeterministic-v4 --LOSS=CC'
+sbatch gpu_run.sh 'train_amn.py --ENVS=AtlantisDeterministic-v4 --LOSS=CC'
+sbatch gpu_run.sh 'train_amn.py --ENVS=PongDeterministic-v4 --LOSS=CC'
+sbatch gpu_run.sh 'train_amn.py --ENVS=SpaceInvadersDeterministic-v4 --LOSS=CC'
+sbatch gpu_run.sh 'train_amn.py --LOSS=CC'
+sbatch gpu_run.sh 'train_amn.py --ENVS=CrazyClimberDeterministic-v4 --LOSS=CC'
+sbatch gpu_run.sh 'train_amn.py --ENVS=EnduroDeterministic-v4 --LOSS=CC'
+sbatch gpu_run.sh 'train_amn.py --ENVS=SeaquestDeterministic-v4 --LOSS=CC'
+sbatch gpu_run.sh 'train_amn.py --ENVS=BoxingDeterministic-v4 --LOSS=CC'
+
