@@ -11,6 +11,7 @@
 #SBATCH --gres=gpu:1
 ##SBATCH -o log.log
 source /moto/home/eg2912/.bashrc
+conda activate tf2.2
 module load cuda10.1/toolkit
 module load cudnn/cuda_10.1_v7.6.4
 python $1
