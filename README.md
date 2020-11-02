@@ -18,9 +18,11 @@ def cont_bern_log_norm(lam, l_lim=0.49, u_lim=0.51):
     return tf.where(tf.logical_or(tf.less(lam, l_lim), tf.greater(lam, u_lim)), log_norm, taylor)
 ```
 
-## The continuous categorical: a novel simplex-valued exponential family
+## The Continuous Categorical: a Novel Simplex-Valued Exponential Family
 
-We provide python scripts to train the models used in the paper, as well as to produce the relevant figures and summary statistics.
+For a self-contained example using the CC distribution, see ```cc/cc_example.ipynb```. This notebook can be used to fit linear and neural network models of compositional data using a Dirichlet and a CC likelihood, producing figures similar to 3, 5 and 6 from the paper.
+
+To fully reproduce the results in the paper, we provide the following python scripts:
 - ```cc/cc_funcs.py``` contains functions specific to the CC distribution (log-normalizer, log-likelihood etc.).
 - ```cc/cc_samplers.py``` contains sampling algorithms for the CC distribution.
 - ```cc/mle_empirical_average.py``` runs simulations that can be used to evaluate the bias of the Dirichlet and CC.
