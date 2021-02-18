@@ -22,13 +22,17 @@ def cont_bern_log_norm(lam, l_lim=0.49, u_lim=0.51):
 
 For a self-contained example using the CC distribution, see ```cc/cc_example.ipynb```. This notebook can be used to fit linear and neural network models of compositional data using a Dirichlet and a CC likelihood, producing figures similar to 3, 5 and 6 from the paper.
 
-To fully reproduce the results in the paper, we provide the following python scripts:
+To reproduce the results in the paper, we provide the following python scripts:
 - ```cc/cc_funcs.py``` contains functions specific to the CC distribution (log-normalizer, log-likelihood etc.).
 - ```cc/cc_samplers.py``` contains sampling algorithms for the CC distribution.
 - ```cc/mle_empirical_average.py``` runs simulations that can be used to evaluate the bias of the Dirichlet and CC.
 - The scripts ```cc/election*``` prepare the data and fit our models of the UK general election. They include example code for Keras model objects that use the CC (both linear models and neural networks).
 - The scripts ```cc/mnist*``` train teacher and student models for our model compression experiments.
 - The scripts ```cc/plot*``` produce the plots used for the manuscript.
+
+### Numerical instabilities
+
+Note that the normalizing constant of the CC distribution is numerically unstable, especially in high dimensions. As a rule of thumb, for <a href="https://www.codecogs.com/eqnedit.php?latex=K&space;\le&space;10" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K&space;\le&space;10" title="K \le 10" /></a>, instabilities are likely to occur if <a href="https://www.codecogs.com/eqnedit.php?latex=\eta_i&space;\approx&space;\eta_j" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\eta_i&space;\approx&space;\eta_j" title="\eta_i \approx \eta_j" /></a> for some <a href="https://www.codecogs.com/eqnedit.php?latex=i&space;\ne&space;j" target="_blank"><img src="https://latex.codecogs.com/gif.latex?i&space;\ne&space;j" title="i \ne j" /></a>. For larger values of <a href="https://www.codecogs.com/eqnedit.php?latex=K" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K" title="K" /></a>, the normalizing constant can be highly unstable. Finding numerically robust ways to compute the normalizing constant is ongoing work. To check whether a given ```eta``` will cause numerical instability, one indicator is to check whether ```cc_mean(eta)``` returns any nan values.
 
 ## Uses and Abuses of the Cross-Entropy Loss: Case Studies in Modern Deep Learning
 
