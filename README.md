@@ -47,3 +47,8 @@ To reproduce the results on CC-AMN:
 - ```cc/icbinb/rl/train_amn.py``` trains AMNs on Atari games.
 - ```cc/icbinb/rl/run_all*``` runs and saves our DQNs and AMNs.
 - ```cc/icbinb/rl/plot_amn.py``` plots the results.
+
+## On the Normalizing Constant of the Continuous Categorical Distribution
+
+Our code is available at ```cc/normalizing_constant/experiments.ipynb```.
+
