@@ -1,6 +1,6 @@
 # The continuous Bernoulli & The continuous categorical
 
-This repo contains example code from [The continuous Bernoulli: fixing a pervasive error in variational autoencoders](https://arxiv.org/abs/1907.06845) (Tensorflow 1), [The continuous categorical: a novel simplex-valued exponential family](https://arxiv.org/abs/2002.08563) (Tensorflow 2), and [Uses and Abuses of the Cross-Entropy Loss: Case Studies in Modern Deep Learning](https://arxiv.org/abs/2002.08563) (Tensorflow 2).
+This repo contains example code from [The continuous Bernoulli: fixing a pervasive error in variational autoencoders](https://arxiv.org/abs/1907.06845) (Tensorflow 1), [The continuous categorical: a novel simplex-valued exponential family](https://arxiv.org/abs/2002.08563) (Tensorflow 2), [Uses and Abuses of the Cross-Entropy Loss: Case Studies in Modern Deep Learning](https://arxiv.org/abs/2011.05231) (Tensorflow 2), and [On the Normalizing Constant of the Continuous Categorical Distribution](https://arxiv.org/abs/2204.13290) (Tensorflow 2).
 
 ## The continuous Bernoulli: fixing a pervasive error in variational autoencoders
 
